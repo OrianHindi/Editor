@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/orian/CLionProjects/Assigment1/Document.h
+vector
+-
+string
+-
+
+/home/orian/CLionProjects/Assigment1/Editor.cpp
+Editor.h
+/home/orian/CLionProjects/Assigment1/Editor.h
+stdio.h
+-
+iostream
+-
+
+/home/orian/CLionProjects/Assigment1/Editor.h
+string
+-
+Document.h
+/home/orian/CLionProjects/Assigment1/Document.h
+

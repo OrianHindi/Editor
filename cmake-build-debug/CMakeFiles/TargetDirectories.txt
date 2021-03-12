@@ -1,0 +1,3 @@
+/home/orian/CLionProjects/Assigment1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/orian/CLionProjects/Assigment1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/orian/CLionProjects/Assigment1/cmake-build-debug/CMakeFiles/Assigment1.dir

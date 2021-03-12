@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Assigment1.dir/main.cpp.o CMakeFiles/Assigment1.dir/Editor.cpp.o CMakeFiles/Assigment1.dir/Document.cpp.o  -o Assigment1 
