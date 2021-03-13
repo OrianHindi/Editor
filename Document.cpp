@@ -132,10 +132,11 @@ void Document::print() {
 }
 
 void Document::write(string file){
-    ofstream oFile(file);
+    ofstream oFile;
+    oFile.open(file);
     if(!oFile.is_open()){cout<<"Failed to open file"<<endl;return;}
     for(string line: vec){
-        oFile<<line<<"/n";
+        oFile<<line<<endl;
     }
     oFile.close();
 
@@ -144,126 +145,6 @@ void Document::write(string file){
 
 
 
-void::Document::loop(){
-    string line,write;
-    int marker;
-    cout<<"pos:"<<this->pos<< "  "<< "vec size:" << vec.size()<<endl;
-    getline(cin,write);
-
-    while(write!="q"){
-        if(write.at(0)=='/' && write.at(vec.size()-1) == '/'){
-            cout<<"/text/"<<endl;
-            bool found = false;
-            write = write.substr(1,vec.size()-1);
-            for(int i =pos+1 ;pos<vec.size();pos++){
-                if(vec.at(i).find(write)!=string::npos){
-                    pos = i;
-                    found = true;
-                }
-            }
-            if(!found){
-                for(int i = 0;i<=pos;i++){
-                    if(vec.at(i).find(write)!=string::npos){
-                        pos = i;
-                    }
-                }
-            }
-        }
-        else if(write.at(0)=='s' && write.at(1)=='/' && write.at(vec.size()-1)=='/'){
-            cout<<"im here"<<endl;
-            string old, change;
-            write = write.substr(2,write.size()-1);
-            cout<<"write after parse"<<write<<endl;
-            int i = write.find('/');
-//            old = write.substr(0,i);
-//            change = write.substr(i+1,)
-
-        }
-        cout<<"write at while"<<write<<endl;
-        try{
-            //handle all number cases.e.g: +1,2,-1..
-            marker = stoi(write);
-            if(write.at(0) == '+' || write.at(0)== '-'){
-                if(this->pos + marker >= this->vec.size() || this->pos + marker<0){
-                    cout<<"?"<<endl;
-                }
-                else pos += marker;
-                cout<<"pos:"<<this->pos<< "  "<< "vec size:" << vec.size()<<endl;
-            }
-            else{
-                if(marker>vec.size()) cout<<"?"<<endl;
-                else{
-                    pos = marker-1;
-                    cout<<"pos:"<<this->pos<< "  "<< "vec size:" << vec.size()<<endl;
-                }
-            }
-        } catch (invalid_argument e) {
-            cout<<"chatched";
-        }
-        if(write == "$") pos = vec.size()-1;
-        else if (write =="a"){
-
-            cout<<" all the vector,vec size:,pos:"<<vec.size() << "pos:" <<pos<<endl;
-            for(vector<string>::iterator it = vec.begin();it!= vec.end();it++){
-                cout<<*it<<endl;
-            }
-        }
-        else if(write == "i" ){
-            getline(cin,write);
-            vector<string>::iterator it = vec.begin()+pos;
-            while(write!="."){
-                if(write!= ""){
-                    vec.emplace(it,write);
-                    pos++;
-                    it = vec.begin()+pos;
-
-                }
-                getline(cin,write);
-
-
-            }
-            pos--;
-            cout<<" all the vector,vec size:,pos:"<<vec.size() << "pos:" <<pos<<endl;
-            for(it = vec.begin();it!= vec.end();it++){
-                cout<<*it<<endl;
-            }
-        }
-        else if(write == "c"){
-            getline(cin,write);
-            vec.at(pos) = write;
-            getline(cin,write);
-            vector<string>::iterator it = vec.begin()+pos;
-            while(write!="."){
-                if(write!=""){
-                    vec.insert(next(it),write);
-                    pos++;
-                    it = vec.begin()+pos;
-
-                }
-                getline(cin,write);
-            }
-            cout<<" all the vector,vec size:,pos:"<<vec.size() << "pos:" <<pos<<endl;
-            for(vector<string>::iterator it = vec.begin();it!= vec.end();it++){
-                cout<<*it<<endl;
-            }
-        }
-        else if(write == "d"){
-            vector<string>::iterator it = vec.begin()+pos;
-            vec.erase(it);
-            pos--;
-            if(pos<0) pos =0;
-        }
-
-        else if(write =="print"){
-            cout<<" all the vector,vec size:,pos:"<<vec.size() << "pos:" <<pos<<endl;
-            for(vector<string>::iterator it = vec.begin();it!= vec.end();it++){
-                cout<<*it<<endl;
-            }
-        }
-
-        cin >>write;
-    }
-}
 
 
 
