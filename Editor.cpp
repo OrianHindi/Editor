@@ -4,6 +4,11 @@
 #include "Editor.h"
 #include <stdio.h>
 #include <iostream>
+#include <fstream>
+
+
+using namespace std;
+
 
 Editor::Editor(string file) {
     this->doc = new Document(file);

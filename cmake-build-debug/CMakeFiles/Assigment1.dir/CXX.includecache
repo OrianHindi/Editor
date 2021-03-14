@@ -20,3 +20,25 @@ vector
 string
 -
 
+/home/orian/CLionProjects/Assigment1/Editor.cpp
+Editor.h
+/home/orian/CLionProjects/Assigment1/Editor.h
+stdio.h
+-
+iostream
+-
+fstream
+-
+
+/home/orian/CLionProjects/Assigment1/Editor.h
+string
+-
+Document.h
+/home/orian/CLionProjects/Assigment1/Document.h
+
+/home/orian/CLionProjects/Assigment1/main.cpp
+iostream
+-
+Editor.h
+/home/orian/CLionProjects/Assigment1/Editor.h
+

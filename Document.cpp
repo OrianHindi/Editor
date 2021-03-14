@@ -21,11 +21,21 @@ Document::Document(string file) {
 }
 
 
-bool Document::validate(int marker,bool check) {
+void Document::validate(int marker,bool check) {
     bool ans = true;
-    if(check && (pos+marker>=vec.size() || pos+marker<0)){ans=false;}
-    else if(!check && (marker>vec.size() || marker<0)){ans = false;}
-    return ans;
+    if(check){
+        if(pos+marker>=vec.size()){pos=vec.size()-1;}
+        else if(pos+marker<0){pos=0;}
+        else pos=pos+marker;
+    }
+    if(!check){
+        if(marker>vec.size()){pos = vec.size()-1;}
+        else if(marker<0){pos = 0;}
+        else pos = marker-1;
+    }
+
+
+
 }
 
 
@@ -34,12 +44,12 @@ void Document::changePos(string line) {
     try{
         marker = stoi(line);
         if(line.at(0) =='+' || line.at(0)== '-'){
-            if(validate(marker,true)) {pos +=marker;}
-            else{cout<<"?"<<endl;}
+            validate(marker,true);
+
         }
         else{
-            if (validate(marker,false)){pos = marker-1;}
-            else{cout<<"?"<<endl;}
+            validate(marker,false);
+
         }
     } catch (invalid_argument e) {}
 
@@ -49,13 +59,15 @@ void Document::changePos(string line) {
 void Document::pointEnd() {
     this->pos = this->vec.size()-1;
 }
+
+
 void Document::addAfter() {
     string line;
     getline(cin,line);
+    vector<string>::iterator it = vec.begin()+pos;
     while(line!= "."){
-        if(pos == vec.size()-1){vec.push_back(line);pos++;}
+        if(pos == vec.size()-1 || pos == 0 || it == vec.end()){vec.push_back(line);pos++;}
         else{
-            vector<string>::iterator it = vec.begin()+pos;
             vec.insert(next(it),line);
             pos++;
         }
@@ -117,13 +129,16 @@ void Document::find(string line) {
 
 }
 
+
 void Document::swap(string line) {
     int delimetr =line.find('/');
     string old = line.substr(0,delimetr);
     string fresh = line.substr(delimetr+1);
-    line.replace(delimetr,old.size(),fresh);
-
+    delimetr = vec.at(pos).find(old);
+    if(delimetr!=string::npos){    vec.at(pos).replace(delimetr,old.size(),fresh);}
 }
+
+
 void Document::print() {
     cout<<"pos:"<<pos<<"           "<<"vec size:"<<vec.size()<<endl;
     for(auto it = vec.begin();it!= vec.end();it++){

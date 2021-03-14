@@ -13,7 +13,7 @@ class Document{
 private:
     vector<string> vec;
     int pos;
-    bool validate(int marker,bool check);
+    void validate(int marker,bool check);
 
 public:
     Document(){pos = 0;}
@@ -30,7 +30,6 @@ public:
     void swap(string line);
     void print();
     void write(string file);
-    void loop();
 
 
 };

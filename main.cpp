@@ -6,15 +6,19 @@ using namespace std;
 
 
 int main(int argc, char* argv[]) {
-    string file = "/home/orian/Desktop/AdvProg/months.txt";
-    Editor d(file);
-    d.loop();
-//        string a ="w hello";
-//        string b = "changed";
-//        string search ="name";
-//        int ax = a.find(search);
-//       // cout<<a.replace(ax,search.size(),b)<<endl;
-//        cout<<a.substr(2);
+    switch (argc) {
+        case 1:{
+            Editor editor;
+            editor.loop();
+            break;
+        }
+        case 2:
+            Editor editor1(argv[1]);
+            editor1.loop();
+            break;
+
+    }
+
 
    return 0;
 }
