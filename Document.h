@@ -16,7 +16,7 @@ private:
     void validate(int marker,bool check);
 
 public:
-    Document(){pos = 0;}
+    Document(){pos = -1;}
     Document(string file);
     vector<string> getVec(){return this->vec;}
     void pointEnd();

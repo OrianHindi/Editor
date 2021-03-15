@@ -64,11 +64,13 @@ void Document::pointEnd() {
 void Document::addAfter() {
     string line;
     getline(cin,line);
-    vector<string>::iterator it = vec.begin()+pos;
+
     while(line!= "."){
-        if(pos == vec.size()-1 || pos == 0 || it == vec.end()){vec.push_back(line);pos++;}
+        if(pos == vec.size()-1 || pos == 0 ){vec.push_back(line);pos++;}
         else{
-            vec.insert(next(it),line);
+            vector<string>::iterator it = vec.begin()+pos;
+            if(it == vec.end()){vec.push_back(line);}
+            else {vec.insert(next(it),line);}
             pos++;
         }
         getline(cin,line);
